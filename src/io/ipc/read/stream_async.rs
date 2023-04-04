@@ -80,10 +80,7 @@ async fn maybe_next<R: AsyncRead + Unpin + Send>(
         Ok(()) => (),
         Err(e) => {
             return if e.kind() == std::io::ErrorKind::UnexpectedEof {
-                // Handle EOF without the "0xFFFFFFFF 0x00000000"
-                // valid according to:
-                // https://arrow.apache.org/docs/format/Columnar.html#ipc-streaming-format
-                Ok(Some(StreamState::Waiting(state)))
+                Ok(None)
             } else {
                 Err(Error::from(e))
             };
