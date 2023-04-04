@@ -34,7 +34,7 @@ mod primitive;
 mod structure;
 mod utf8;
 
-pub(crate) use boolean::take as take_boolean;
+//pub(crate) use boolean::take as take_boolean;
 
 /// Returns a new [`Array`] with only indices at `indices`. Null indices are taken as nulls.
 /// The returned array has a length equal to `indices.len()`.
